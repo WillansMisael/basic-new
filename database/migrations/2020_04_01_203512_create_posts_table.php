@@ -15,7 +15,20 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('user_id')->unsigned();
+            
+            $table->string('title');
+            $table->string('slug')->unique();
+
+            $table->string('image')->nullable();//puede o no tener una imagen
+            
+            $table->text('body');
+            $table->text('iframe')->nullable();//puede o no tener un iframe
+            
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
