@@ -23,4 +23,15 @@ class Post extends Model
             ]
         ];
     }
+//relacion uno
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    //creamos como acortar el texto del body dentro del blog
+    public function getGetExcerptAttribute()
+    {
+        return substr($this->body, 0 ,140);
+    }
 }
