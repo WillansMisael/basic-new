@@ -8,6 +8,27 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
+
+                        @if ($post->image && $post->iframe)
+                        <!-- explicar que se trabajara con html -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <img src="{{ $post->get_image }}" class="card-img-top"><br><hr>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    {!! $post->iframe !!}
+                                </div>
+                            </div>
+                        </div>
+                            
+                            @elseif ($post->image)
+                            <img src="{{ $post->get_image }}" class="card-img-top">   
+                                @elseif ($post->iframe)
+                                <div class="embed-responsive embed-responsive-16by9">
+                                {!! $post->iframe !!}
+                                </div>
+                        @endif
                        <h5 class="card-title">{{ $post->title}}</h5>
                        <p class="card-text">
                             {{ $post->body}}
