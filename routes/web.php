@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//rutas creadas
+//rutas creadas web
 Route::get('/', 'PageController@posts');
 Route::get('blog/{post}', 'PageController@post')->name('post');
 
@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//rutas adm
+Route::resource('posts', 'Backend\PostController')
+    ->middleware('auth') //porque necesito protejerlo
+    ->except('show');//porque es publico
