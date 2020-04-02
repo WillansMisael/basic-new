@@ -9,6 +9,12 @@ class Post extends Model
 {
     use Sluggable;
 
+    //recibir datos de forma masiva 
+    //con esto decimos que si estamos recibiendo datos en cantidad lo filtre.
+    //asi no se enviaran datos aleatorios
+    protected $fillable = [
+        'title', 'body', 'iframe', 'image', 'user_id'
+    ];
     /**
      * Return the sluggable configuration array for this model.
      *

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -39,9 +39,39 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+
+    //ponemos la validacion PostRequest que creamos... 
+    public function store(PostRequest $request)
+    {  /* mio
+        //salvar
+        $post = Post::create([
+            'user_id' => auth()->user()->id
+        ] + $request->all());
+        
+        //image
+        if($request->file('file')){
+            //guardamos el archivo y generamos una ruta y no un archivo en una carpeta publica
+            $post->image = $request->file('file')->store('posts','public');//store crea una carpeta postss en public
+            $post->save();
+        }
+
+        //retornar
+        return back()->with('status', 'Creado con exito');
+        */
+          //dd($request->all());
+        //salvar
+        $post = Post::create([
+            'user_id' => auth()->user()->id
+        ] + $request->all());
+
+        //image
+        if ($request->file('file')) {
+            $post->image = $request->file('file')->store('posts', 'public');
+            $post->save();
+        }
+
+        //retornar
+        return back()->with('status', 'Creado con éxito');
     }
 
     /**

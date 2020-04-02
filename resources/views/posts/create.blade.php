@@ -17,23 +17,23 @@
                     <form 
                         action="{{ route('posts.store') }}" 
                         method="POST"
-                        encrtype="multipart/form-date"    
+                        enctype="multipart/form-data"
                     >
                         <div class="form-group">
                             <label>Título *</label>
                             <input type="text" name="title" class="form-control" required>
                         </div>
-                        <div class="form-group custom-file">
-                            <input type="file"class="custom-file-input" name="image" id="image">
-                            <label class="custom-file-label"for="image" data-browse="Buscar"><i class="far fa-file-image"></i> Elige una imagen</label>                           
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" name="file">
                         </div>
                         <div class="form-group">
                             <label>Contenido *</label>
-                            <textarea name="body" rows="6"class="form-control" required></textarea>
+                            <textarea name="body" rows="6" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Contenido embebido</label>
-                            <textarea name="iframe" class="form-control" ></textarea>
+                            <textarea name="iframe" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             @csrf
