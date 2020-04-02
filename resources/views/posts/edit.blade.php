@@ -34,7 +34,7 @@
 
                         <div class="form-group">
                             <label>contenido embebido</label>
-                            <textarea name="iframe" class="form-control" required>
+                            <textarea name="iframe" class="form-control">
                                 {{ old('iframe', $post->iframe) }}
                             </textarea>
                         </div>
